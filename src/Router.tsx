@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { DefaultLayout } from './layouts/DefaultLayout'
+import { Cart } from './pages/Cart'
 import { Home } from './pages/Home'
-import { Purchase } from './pages/Purchase'
 import { Success } from './pages/Success'
 
 export function Router(): JSX.Element {
@@ -9,7 +9,7 @@ export function Router(): JSX.Element {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route index element={<Home />} />
-        <Route path="/purchase" element={<Purchase />} />
+        <Route path="/purchase" element={<Cart />} />
         <Route path="/success" element={<Success />} />
       </Route>
     </Routes>
