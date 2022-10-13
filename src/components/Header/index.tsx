@@ -18,7 +18,7 @@ export function Header(): JSX.Element {
             Porto Alegre, RS
           </span>
           <NavLink to="/purchase" title="Cart">
-            <ShoppingCart size={32} weight="fill" />
+            <ShoppingCart size={26} weight="fill" />
           </NavLink>
         </div>
       </nav>

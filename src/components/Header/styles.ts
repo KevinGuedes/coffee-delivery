@@ -12,6 +12,8 @@ export const HeaderContainer = styled.header`
     }
 
     img {
+      box-sizing: initial;
+      padding: 2px;
       height: 2.5rem;
     }
 
@@ -47,7 +49,6 @@ export const HeaderContainer = styled.header`
 
         svg {
           color: ${props => props.theme.brand['yellow-dark']};
-          border: 4px solid transparent;
         }
       }
     }
