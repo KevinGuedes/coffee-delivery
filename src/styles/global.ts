@@ -7,11 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  :focus {
-    outline: 0;
-    box-shadow: 0 0 0 1px ${props => props.theme.brand['yellow-dark']}
-  }
-
   body {
     background-color: ${props => props.theme.base.background};
     -webkit-font-smoothing: antialiased;
@@ -21,5 +16,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+  }
+
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px ${props => props.theme.brand['yellow-dark']}
   }
 `

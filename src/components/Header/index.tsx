@@ -14,7 +14,7 @@ export function Header(): JSX.Element {
 
         <div>
           <span>
-            <MapPin size={32} weight="fill" />
+            <MapPin size={26} weight="fill" />
             Porto Alegre, RS
           </span>
           <NavLink to="/purchase" title="Cart">

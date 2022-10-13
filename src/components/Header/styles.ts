@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
 
     img {
       box-sizing: initial;
-      padding: 2px;
+      padding: 0.125rem;
       height: 2.5rem;
     }
 
@@ -33,10 +33,6 @@ export const HeaderContainer = styled.header`
         padding: 0.5rem;
         height: 2.375rem;
         border-radius: 4px;
-
-        svg {
-          border: 4px solid transparent;
-        }
       }
 
       a {
