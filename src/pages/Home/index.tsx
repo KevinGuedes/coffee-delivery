@@ -1,10 +1,11 @@
+import { CoffeesList } from './components/CoffesList'
 import { Introduction } from './components/Introduction'
-import { HomeContainer } from './styles'
 
 export function Home(): JSX.Element {
   return (
-    <HomeContainer>
+    <main>
       <Introduction />
-    </HomeContainer>
+      <CoffeesList />
+    </main>
   )
 }
