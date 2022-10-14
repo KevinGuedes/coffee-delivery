@@ -1,7 +1,12 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { CoffeeCardContainer, FooterContainer, HeaderContainer } from './styles'
+import {
+  CoffeeCardContainer,
+  FooterContainer,
+  HeaderContainer,
+  SelectAmountContainer
+} from './styles'
 
 import { Coffee } from '../../../../data/coffees'
 
@@ -48,7 +53,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps): JSX.Element {
           <strong>{coffee.price}</strong>
         </span>
 
-        <div>
+        <SelectAmountContainer>
           <button
             type="button"
             title="Remover café"
@@ -64,7 +69,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps): JSX.Element {
           >
             <Plus size={16} weight="bold" />
           </button>
-        </div>
+        </SelectAmountContainer>
 
         <NavLink to="/purchase" title="Cart">
           <ShoppingCart size={26} weight="fill" />
