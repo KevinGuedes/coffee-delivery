@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 
 export const SelectedCoffeesContainer = styled.section`
+  flex: 1;
+
   h3 {
     font-family: 'Baloo 2';
     font-weight: bold;
@@ -17,7 +19,7 @@ export const SelectedCoffeesCard = styled.div`
   flex-direction: column;
   gap: 1.5rem;
 
-  button {
+  > button {
     flex: 1;
     border: 0;
     padding: 0.75rem;

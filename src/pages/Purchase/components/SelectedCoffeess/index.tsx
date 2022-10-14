@@ -5,11 +5,19 @@ import {
   SummaryData
 } from './styles'
 
+import { coffees } from '../../../../data/coffees'
+import { CoffeeItem } from '../CoffeeItem'
+
 export function SelectedCoffees(): JSX.Element {
   return (
     <SelectedCoffeesContainer>
       <h3>Cafés selecionados</h3>
+
       <SelectedCoffeesCard>
+        {coffees.slice(0, 2).map(coffee => {
+          return <CoffeeItem key={coffee.id} coffee={coffee} />
+        })}
+
         <SummaryContainer>
           <SummaryData isTotalPrice={false}>
             <span>Total de itens</span>
