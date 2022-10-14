@@ -3,9 +3,13 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { CoffeeCardContainer, FooterContainer, HeaderContainer } from './styles'
 
-import coffee from '../../../../assets/coffees/traditional-express.png'
+import { Coffee } from '../../../../data/coffees'
 
-export function CoffeeCard(): JSX.Element {
+interface CoffeeCardProps {
+  coffee: Coffee
+}
+
+export function CoffeeCard({ coffee }: CoffeeCardProps): JSX.Element {
   const [selectedAmount, setSelectedAmount] = useState(0)
 
   function handleAddCoffee(): void {
@@ -27,20 +31,21 @@ export function CoffeeCard(): JSX.Element {
   return (
     <CoffeeCardContainer>
       <HeaderContainer>
-        <img src={coffee} alt="Café Expresso Tradicional" />
+        <img src={coffee.image} alt="Café Expresso Tradicional" />
         <div>
-          <strong>TRADICIONAL</strong>
-          <strong>GELADO</strong>
+          {coffee.tags.map(tag => {
+            return <strong key={tag}>{tag}</strong>
+          })}
         </div>
       </HeaderContainer>
 
-      <strong>Expresso Tradicional</strong>
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <strong>{coffee.name}</strong>
+      <p>{coffee.description}</p>
 
       <FooterContainer>
         <span>
           R$
-          <strong>9.99</strong>
+          <strong>{coffee.price}</strong>
         </span>
 
         <div>
