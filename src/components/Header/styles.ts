@@ -22,7 +22,7 @@ export const HeaderContainer = styled.header`
       align-items: center;
       gap: 0.75rem;
 
-      span {
+      > span {
         font-size: 0.875rem;
         color: ${props => props.theme.brand['purple-dark']};
         background-color: ${props => props.theme.brand['purple-light']};
@@ -42,9 +42,29 @@ export const HeaderContainer = styled.header`
         height: 2.375rem;
         width: 2.375rem;
         background-color: ${props => props.theme.brand['yellow-light']};
+        position: relative;
 
         svg {
           color: ${props => props.theme.brand['yellow-dark']};
+        }
+
+        strong {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          font-size: 0.75rem;
+          color: ${props => props.theme.white};
+          background-color: ${props => props.theme.brand['yellow-dark']};
+          padding: 8px;
+
+          height: 1.25rem;
+          width: 1.25rem;
+          border-radius: 50%;
+
+          position: absolute;
+          top: -8px;
+          right: -8px;
         }
       }
     }

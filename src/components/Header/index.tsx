@@ -19,6 +19,7 @@ export function Header(): JSX.Element {
           </span>
           <NavLink to="/purchase" title="Cart">
             <ShoppingCart size={26} weight="fill" />
+            <strong>1</strong>
           </NavLink>
         </div>
       </nav>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const IntroductionContainer = styled.section`
   display: flex;
   padding: 5.75rem 0;
-  gap: 3.125rem;
+  justify-content: space-between;
 
   aside {
     h1 {

@@ -78,9 +78,11 @@ export const CoffeeCardContainer = styled.article`
       gap: 4px;
       padding: 0.5rem;
       border-radius: 6px;
-      margin: 0 0.5rem 0 1.5rem;
+      margin: 0 0.5rem 0 1.25rem;
 
       span {
+        width: 1rem;
+        text-align: center;
         line-height: 1.6;
       }
 
