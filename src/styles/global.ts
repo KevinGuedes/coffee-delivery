@@ -22,4 +22,17 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-shadow: 0 0 0 1px ${props => props.theme.brand['yellow-dark']}
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: ${props => props.theme.brand.purple};
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: ${props => props.theme.brand['purple-dark']};
+  }
 `

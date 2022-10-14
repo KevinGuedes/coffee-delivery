@@ -36,10 +36,12 @@ export const SuccessContainer = styled.main`
       background-clip: content-box, border-box;
 
       > div {
+        background-color: ${props => props.theme.base.background};
         display: flex;
         flex-direction: column;
         gap: 2rem;
         padding: 2.5rem;
+        border-radius: 6px 36px;
       }
     }
   }

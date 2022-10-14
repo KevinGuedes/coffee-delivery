@@ -7,7 +7,7 @@ import { Information } from '../../components/Information'
 export function Success(): JSX.Element {
   return (
     <SuccessContainer>
-      <h1>Uhu! Pedido confirmado</h1>
+      <h1>Uhuuu! Pedido confirmado!</h1>
       <p>Agora é só aguardar que logo o café chegará até você</p>
       <section>
         <div>
