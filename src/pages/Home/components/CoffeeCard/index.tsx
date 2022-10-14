@@ -1,7 +1,7 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { CoffeeCardContainer } from './styles'
+import { CoffeeCardContainer, FooterContainer, HeaderContainer } from './styles'
 
 import coffee from '../../../../assets/coffees/traditional-express.png'
 
@@ -26,18 +26,18 @@ export function CoffeeCard(): JSX.Element {
 
   return (
     <CoffeeCardContainer>
-      <header>
+      <HeaderContainer>
         <img src={coffee} alt="Café Expresso Tradicional" />
         <div>
           <strong>TRADICIONAL</strong>
           <strong>GELADO</strong>
         </div>
-      </header>
+      </HeaderContainer>
 
       <strong>Expresso Tradicional</strong>
       <p>O tradicional café feito com água quente e grãos moídos</p>
 
-      <footer>
+      <FooterContainer>
         <span>
           R$
           <strong>9.99</strong>
@@ -64,7 +64,7 @@ export function CoffeeCard(): JSX.Element {
         <NavLink to="/purchase" title="Cart">
           <ShoppingCart size={26} weight="fill" />
         </NavLink>
-      </footer>
+      </FooterContainer>
     </CoffeeCardContainer>
   )
 }
