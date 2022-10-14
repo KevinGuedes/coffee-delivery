@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components'
 export const SelectedCoffeesContainer = styled.section`
   flex: 1;
 
+  max-width: 28rem;
+
   h3 {
     font-family: 'Baloo 2';
     font-weight: bold;
@@ -34,6 +36,11 @@ export const SelectedCoffeesCard = styled.div`
 
     &:hover {
       background-color: ${props => props.theme.brand['yellow-dark']};
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px ${props => props.theme.brand['yellow-dark']};
     }
   }
 `

@@ -48,6 +48,11 @@ export const HeaderContainer = styled.header`
           color: ${props => props.theme.brand['yellow-dark']};
         }
 
+        &:focus {
+          outline: 0;
+          box-shadow: 0 0 0 2px ${props => props.theme.brand['yellow-dark']};
+        }
+
         strong {
           display: flex;
           align-items: center;

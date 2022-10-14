@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :focus {
-    outline: 2px ${props => props.theme.brand['yellow-dark']};
-    box-shadow: 0 0 0 2px ${props => props.theme.brand['yellow-dark']};
+    outline: 0;
+    box-shadow: 0 0 0 2px ${props => props.theme.brand.purple};
   }
 
   ::-webkit-scrollbar {
