@@ -23,11 +23,19 @@ export function SelectAmount(): JSX.Element {
 
   return (
     <SelectAmountContainer>
-      <button type="button" title="Remover café" onClick={handleRemoveCoffee}>
+      <button
+        type="button"
+        title="Remover uma unidade"
+        onClick={handleRemoveCoffee}
+      >
         <Minus size={16} weight="bold" />
       </button>
       <span>{selectedAmount}</span>
-      <button type="button" title="Adicionar café" onClick={handleAddCoffee}>
+      <button
+        type="button"
+        title="Adicionar uma unidade"
+        onClick={handleAddCoffee}
+      >
         <Plus size={16} weight="bold" />
       </button>
     </SelectAmountContainer>

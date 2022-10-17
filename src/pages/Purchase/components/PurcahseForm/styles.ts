@@ -3,7 +3,6 @@ import { defaultTheme } from '../../../../styles/themes/defaultTheme'
 
 export const PurchaseFormContainer = styled.section`
   flex: 1;
-  max-width: 40rem;
 
   h3 {
     font-family: 'Baloo 2';
@@ -16,6 +15,37 @@ export const PurchaseFormContainer = styled.section`
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+
+    input {
+      position: relative;
+      font-size: 0.875rem;
+      line-height: 1.3;
+      color: ${props => props.theme.base.text};
+      border: 1px solid ${props => props.theme.base.button};
+      border-radius: 4px;
+      background-color: ${props => props.theme.base.input};
+      padding: 0.75rem;
+
+      &::placeholder {
+        color: ${props => props.theme.base.label};
+      }
+
+      &::after {
+        content: 'Opcional';
+        position: absolute;
+        font-style: italic;
+        color: ${props => props.theme.base.label};
+      }
+
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px ${props => props.theme.brand['yellow-dark']};
+      }
+
+      &:focus::placeholder {
+        color: transparent;
+      }
+    }
   }
 `
 

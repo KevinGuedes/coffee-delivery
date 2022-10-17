@@ -26,7 +26,7 @@ export const CoffeeItemContainer = styled.article`
 `
 
 export const ActionsContainer = styled.div`
-  display: block;
+  display: flex;
   flex-direction: column;
   gap: 0.5rem;
 

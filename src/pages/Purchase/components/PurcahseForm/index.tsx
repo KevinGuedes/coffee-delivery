@@ -1,3 +1,4 @@
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import {
   MapPinLine,
   CurrencyDollar,
@@ -5,7 +6,6 @@ import {
   Bank,
   Money
 } from 'phosphor-react'
-import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
 import {
   FormSectionHeader,
@@ -26,7 +26,7 @@ export function PurchaseForm(): JSX.Element {
     <PurchaseFormContainer>
       <h3>Complete seu pedido</h3>
 
-      <form>
+      <form id="purchase">
         <MainDataContainer>
           <FormSectionHeader iconColor="yellow-dark">
             <MapPinLine size={22} />
@@ -35,6 +35,10 @@ export function PurchaseForm(): JSX.Element {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </FormSectionHeader>
+
+          <div>
+            <input placeholder="teste" />
+          </div>
         </MainDataContainer>
         <PaymentTypeContainer>
           <FormSectionHeader iconColor="purple">
@@ -54,15 +58,15 @@ export function PurchaseForm(): JSX.Element {
           >
             <ToggleGroup.Item value="credit-card">
               <CreditCard size={16} />
-              Certão de crédito
+              CARTÃO DE CRÉDITO
             </ToggleGroup.Item>
             <ToggleGroup.Item value="debit-card">
               <Bank size={16} />
-              Certão de débito
+              CARTÃO DE DÉBITO
             </ToggleGroup.Item>
             <ToggleGroup.Item value="money">
               <Money size={16} />
-              Dinheiro
+              DINHEIRO
             </ToggleGroup.Item>
           </ToggleGroup.Root>
         </PaymentTypeContainer>

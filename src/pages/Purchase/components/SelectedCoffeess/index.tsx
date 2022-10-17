@@ -35,7 +35,9 @@ export function SelectedCoffees(): JSX.Element {
           </SummaryData>
         </SummaryContainer>
 
-        <button type="submit">CONFIRMAR PEDIDO</button>
+        <button form="purchase" type="submit">
+          CONFIRMAR PEDIDO
+        </button>
       </SelectedCoffeesCard>
     </SelectedCoffeesContainer>
   )
