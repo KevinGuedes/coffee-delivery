@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components'
 
 export const SelectedCoffeesContainer = styled.section`
-  flex: 1;
-
-  max-width: 28rem;
+  flex-grow: 1;
+  min-width: 28rem;
 
   h3 {
     font-family: 'Baloo 2';

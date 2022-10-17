@@ -21,17 +21,17 @@ export function SelectedCoffees(): JSX.Element {
         <SummaryContainer>
           <SummaryData isTotalPrice={false}>
             <span>Total de itens</span>
-            <span>RS$ 29,70</span>
+            <span>R$ 29,70</span>
           </SummaryData>
 
           <SummaryData isTotalPrice={false}>
             <span>Entrega</span>
-            <span>RS$3,50</span>
+            <span>R$ 3,50</span>
           </SummaryData>
 
           <SummaryData isTotalPrice>
             <strong>Total</strong>
-            <strong>RS$ 33,20</strong>
+            <strong>R$ 33,20</strong>
           </SummaryData>
         </SummaryContainer>
 
