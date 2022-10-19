@@ -5,33 +5,38 @@ import {
   SummaryData
 } from './styles'
 
-import { coffees } from '../../../../data/coffees'
 import { CoffeeItem } from '../CoffeeItem'
+import { useCoffeesContext } from '../../../../contexts/CoffeesContext'
 
 export function SelectedCoffees(): JSX.Element {
+  const { coffeesOnCart, totalPrice, itemsPrice, deliveryPrice } =
+    useCoffeesContext()
+
   return (
     <SelectedCoffeesContainer>
       <h3>Cafés selecionados</h3>
 
       <SelectedCoffeesCard>
-        {coffees.slice(0, 2).map(coffee => {
-          return <CoffeeItem key={coffee.id} coffee={coffee} />
+        {coffeesOnCart.map(coffeeOnCart => {
+          return (
+            <CoffeeItem key={coffeeOnCart.id} coffeeOnCart={coffeeOnCart} />
+          )
         })}
 
         <SummaryContainer>
           <SummaryData isTotalPrice={false}>
             <span>Total de itens</span>
-            <span>R$ 29,70</span>
+            <span>{itemsPrice}</span>
           </SummaryData>
 
           <SummaryData isTotalPrice={false}>
             <span>Entrega</span>
-            <span>R$ 3,50</span>
+            <span>{deliveryPrice}</span>
           </SummaryData>
 
           <SummaryData isTotalPrice>
             <strong>Total</strong>
-            <strong>R$ 33,20</strong>
+            <strong>{totalPrice}</strong>
           </SummaryData>
         </SummaryContainer>
 

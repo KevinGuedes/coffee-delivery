@@ -1,22 +1,30 @@
 import { Trash } from 'phosphor-react'
 import { SelectAmount } from '../../../../components/SelectAmount'
-import { Coffee } from '../../../../data/coffees'
+import {
+  CoffeeOnCart,
+  useCoffeesContext
+} from '../../../../contexts/CoffeesContext'
 import { ActionsContainer, CoffeeItemContainer } from './styles'
 
 interface CoffeeItemProps {
-  coffee: Coffee
+  coffeeOnCart: CoffeeOnCart
 }
 
-export function CoffeeItem({ coffee }: CoffeeItemProps): JSX.Element {
+export function CoffeeItem({ coffeeOnCart }: CoffeeItemProps): JSX.Element {
+  const { removeCoffeeFromCart } = useCoffeesContext()
+
+  function handleRemoveCoffeeFromCart(): void {
+    removeCoffeeFromCart(coffeeOnCart.id)
+  }
   return (
     <CoffeeItemContainer>
       <div>
-        <img src={coffee.image} alt={coffee.name} />
+        <img src={coffeeOnCart.image} alt={coffeeOnCart.name} />
         <ActionsContainer>
-          <span>{coffee.name}</span>
+          <span>{coffeeOnCart.name}</span>
           <div>
-            <SelectAmount />
-            <button type="button">
+            <SelectAmount coffeeId={coffeeOnCart.id} />
+            <button type="button" onClick={handleRemoveCoffeeFromCart}>
               <Trash size={18} />
               REMOVER
             </button>
@@ -24,7 +32,7 @@ export function CoffeeItem({ coffee }: CoffeeItemProps): JSX.Element {
         </ActionsContainer>
       </div>
 
-      <strong>R$ {coffee.price}</strong>
+      <strong>R$ {coffeeOnCart.price}</strong>
     </CoffeeItemContainer>
   )
 }

@@ -30,7 +30,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps): JSX.Element {
           <strong>{coffee.price}</strong>
         </span>
 
-        <SelectAmount />
+        <SelectAmount coffeeId={coffee.id} />
 
         <NavLink to="/purchase" title="Cart">
           <ShoppingCart size={26} weight="fill" />

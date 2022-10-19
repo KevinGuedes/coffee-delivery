@@ -1,24 +1,26 @@
 import { Minus, Plus } from 'phosphor-react'
-import { useState } from 'react'
+import { useCoffeesContext } from '../../contexts/CoffeesContext'
 import { SelectAmountContainer } from './styles'
 
-export function SelectAmount(): JSX.Element {
-  const [selectedAmount, setSelectedAmount] = useState(0)
+interface SelectAmountProps {
+  coffeeId: number
+}
 
-  function handleAddCoffee(): void {
-    if (selectedAmount < 99) {
-      setSelectedAmount(state => {
-        return state + 1
-      })
-    }
+export function SelectAmount({ coffeeId }: SelectAmountProps): JSX.Element {
+  const {
+    addOneCoffeeUnitToCart,
+    removeOneCoffeeUnitFromCart,
+    getCoffeeUnitsByCoffeeId
+  } = useCoffeesContext()
+
+  const units = getCoffeeUnitsByCoffeeId(coffeeId)
+
+  function handleAddOneCoffeeUnitToCart(): void {
+    if (units < 100) addOneCoffeeUnitToCart(coffeeId)
   }
 
-  function handleRemoveCoffee(): void {
-    if (selectedAmount > 0) {
-      setSelectedAmount(state => {
-        return state - 1
-      })
-    }
+  function handleRemoveOneCoffeeUnitFromCart(): void {
+    if (units > 0) removeOneCoffeeUnitFromCart(coffeeId)
   }
 
   return (
@@ -26,15 +28,15 @@ export function SelectAmount(): JSX.Element {
       <button
         type="button"
         title="Remover uma unidade"
-        onClick={handleRemoveCoffee}
+        onClick={handleRemoveOneCoffeeUnitFromCart}
       >
         <Minus size={16} weight="bold" />
       </button>
-      <span>{selectedAmount}</span>
+      <span>{units}</span>
       <button
         type="button"
         title="Adicionar uma unidade"
-        onClick={handleAddCoffee}
+        onClick={handleAddOneCoffeeUnitToCart}
       >
         <Plus size={16} weight="bold" />
       </button>
