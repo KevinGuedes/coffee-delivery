@@ -10,11 +10,14 @@ import {
 } from './styles'
 
 export function AddressForm(): JSX.Element {
-  const { register } = useFormContext()
+  const { register, watch } = useFormContext()
 
   function handleCepInput(event: FormEvent<HTMLInputElement>): void {
     cepInputMask(event)
   }
+
+  const complement: string = watch('complement')
+  const showOptionalLabel = complement.length === 0
 
   return (
     <AddressDataContainer>
@@ -48,7 +51,7 @@ export function AddressForm(): JSX.Element {
           <Input
             placeholder="Complemento"
             title="Complemento"
-            hasOptionalLabel
+            showOptionalLabel={showOptionalLabel}
             id="complement"
             register={register}
           />

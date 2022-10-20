@@ -3,13 +3,13 @@ import { FieldValues, UseFormRegister } from 'react-hook-form'
 import { InputContainer } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  hasOptionalLabel?: boolean
+  showOptionalLabel?: boolean
   register: UseFormRegister<FieldValues>
   id: string
 }
 
 export function Input({
-  hasOptionalLabel = false,
+  showOptionalLabel = false,
   register,
   ...props
 }: InputProps): JSX.Element {
@@ -22,7 +22,7 @@ export function Input({
         {...register(props.id, { valueAsNumber: isNumberInput })}
         {...(isNumberInput && { min: 0, step: 1 })}
       />
-      {hasOptionalLabel && <span>Opcional</span>}
+      {showOptionalLabel && <span>Opcional</span>}
     </InputContainer>
   )
 }

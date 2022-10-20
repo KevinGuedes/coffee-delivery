@@ -6,7 +6,7 @@ export function cepInputMask(
   event.currentTarget.maxLength = 9
   let value = event.currentTarget.value
 
-  value = value.replace(/\D/g, '')
+  value = value.replace(/\s/g, '')
   value = value.replace(/^(\d{5})(\d)/, '$1-$2')
   event.currentTarget.value = value
 
