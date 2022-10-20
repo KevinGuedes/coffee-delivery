@@ -1,14 +1,16 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react'
-import { useState } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { FormSectionHeader, PaymentTypeFormContainer } from './styles'
 
-export function PaymentTypeForm(): JSX.Element {
-  const [paymentType, setPaymentType] = useState('')
+export enum PaymentType {
+  CREDIT_CARD = 'Cartão de Crédito',
+  DEBIT_CARD = 'Cartão de Débito',
+  CASH = 'Dinheiro'
+}
 
-  function handlePaymentTypeChange(paymentType: string): void {
-    setPaymentType(paymentType)
-  }
+export function PaymentTypeForm(): JSX.Element {
+  const { register } = useFormContext()
 
   return (
     <PaymentTypeFormContainer>
@@ -23,21 +25,21 @@ export function PaymentTypeForm(): JSX.Element {
       </FormSectionHeader>
 
       <ToggleGroup.Root
+        id="paymentType"
         type="single"
-        value={paymentType}
-        onValueChange={handlePaymentTypeChange}
+        {...register('paymentType')}
       >
-        <ToggleGroup.Item value="credit-card">
+        <ToggleGroup.Item value={PaymentType.CREDIT_CARD}>
           <CreditCard size={16} />
-          CARTÃO DE CRÉDITO
+          {PaymentType.CREDIT_CARD.toUpperCase()}
         </ToggleGroup.Item>
-        <ToggleGroup.Item value="debit-card">
+        <ToggleGroup.Item value={PaymentType.DEBIT_CARD}>
           <Bank size={16} />
-          CARTÃO DE DÉBITO
+          {PaymentType.DEBIT_CARD.toUpperCase()}
         </ToggleGroup.Item>
-        <ToggleGroup.Item value="money">
+        <ToggleGroup.Item value={PaymentType.CASH}>
           <Money size={16} />
-          DINHEIRO
+          {PaymentType.CASH.toUpperCase()}
         </ToggleGroup.Item>
       </ToggleGroup.Root>
     </PaymentTypeFormContainer>

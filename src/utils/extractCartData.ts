@@ -33,11 +33,17 @@ export function extractCartData(coffeesOnCart: CoffeeOnCart[]): CartData {
 }
 
 function getDeliveryPriceByItemsPrice(itemsPrice: number): number {
+  const deliveryTaxes = {
+    low: 0.14,
+    average: 0.1,
+    big: 0.5
+  }
+
   if (itemsPrice < 30) {
-    return itemsPrice * 0.14
-  } else if (itemsPrice >= 30 && itemsPrice < 60) {
-    return itemsPrice * 0.1
+    return itemsPrice * deliveryTaxes.low
+  } else if (itemsPrice >= 30 && itemsPrice < 70) {
+    return itemsPrice * deliveryTaxes.average
   } else {
-    return itemsPrice * 0.05
+    return itemsPrice * deliveryTaxes.big
   }
 }

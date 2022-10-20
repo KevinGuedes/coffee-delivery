@@ -1,4 +1,5 @@
 import { CurrencyDollar } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
 import { Input } from '../Input'
 import {
   AddressDataContainer,
@@ -7,6 +8,8 @@ import {
 } from './styles'
 
 export function AddressForm(): JSX.Element {
+  const { register } = useFormContext()
+
   return (
     <AddressDataContainer>
       <FormSectionHeader>
@@ -20,16 +23,26 @@ export function AddressForm(): JSX.Element {
       </FormSectionHeader>
 
       <InputsContainer>
-        <Input placeholder="CEP" />
-        <Input placeholder="Rua" />
+        <Input placeholder="CEP" id="cep" register={register} />
+        <Input placeholder="Rua" id="street" register={register} />
         <div>
-          <Input placeholder="Número" />
-          <Input placeholder="Complemento" hasOptionalLabel />
+          <Input
+            placeholder="Número"
+            id="number"
+            type="number"
+            register={register}
+          />
+          <Input
+            placeholder="Complemento"
+            hasOptionalLabel
+            id="complement"
+            register={register}
+          />
         </div>
         <div>
-          <Input placeholder="Bairro" />
-          <Input placeholder="Cidade" />
-          <Input placeholder="UF" />
+          <Input placeholder="Bairro" id="neighborhood" register={register} />
+          <Input placeholder="Cidade" id="city" register={register} />
+          <Input placeholder="UF" id="uf" register={register} />
         </div>
       </InputsContainer>
     </AddressDataContainer>

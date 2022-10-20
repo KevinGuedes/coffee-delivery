@@ -46,10 +46,6 @@ export function coffeesReducer(
         coffeOnCart => coffeOnCart.id === payload.coffeeId
       )
 
-      if (existingCofeeOnCartIndex < 0) {
-        return state
-      }
-
       const currentUnits = state.coffeesOnCart[existingCofeeOnCartIndex].units
 
       if (currentUnits - 1 === 0) {
@@ -60,17 +56,16 @@ export function coffeesReducer(
         })
       } else {
         return produce(state, draft => {
-          draft.coffeesOnCart[existingCofeeOnCartIndex].units = currentUnits - 1
+          draft.coffeesOnCart[existingCofeeOnCartIndex].units--
         })
       }
     }
-    case CoffeeActionTypes.REMOVE_COFFEE_FROM_CART: {
+    case CoffeeActionTypes.REMOVE_COFFEE_FROM_CART:
       return produce(state, draft => {
         draft.coffeesOnCart = draft.coffeesOnCart.filter(
           coffeeOnCart => coffeeOnCart.id !== payload.coffeeId
         )
       })
-    }
     default:
       return state
   }

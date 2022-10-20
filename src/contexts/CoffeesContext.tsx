@@ -1,12 +1,12 @@
-import { createContext, ReactNode, useContext, useReducer } from 'react'
+import { ReactNode, createContext, useContext, useReducer } from 'react'
 import { Coffee, coffeesData } from '../data/coffees'
+import { extractCartData } from '../utils/extractCartData'
 import { coffeesReducer } from '../reducers/coffees/reducer'
 import {
   addOneCoffeeUnitToCartAction,
   removeCoffeeFromCartAction,
   removeOneCoffeeUnitFromCartAction
 } from '../reducers/coffees/actions'
-import { extractCartData } from '../utils/extractCartData'
 
 export type CoffeeOnCart = Pick<Coffee, 'id' | 'image' | 'name' | 'price'> & {
   units: number
@@ -25,7 +25,6 @@ interface CoffeesContextData {
   getCoffeeUnitsByCoffeeId: (coffeeId: number) => number
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 const CoffeesContext = createContext({} as CoffeesContextData)
 
 export function useCoffeesContext(): CoffeesContextData {
@@ -44,8 +43,6 @@ export function CoffeesContextProvider({
     coffeesOnCart: []
   })
 
-  const { coffees, coffeesOnCart } = coffeesState
-
   function addOneCoffeeUnitToCart(coffeeId: number): void {
     dispatch(addOneCoffeeUnitToCartAction(coffeeId))
   }
@@ -58,15 +55,15 @@ export function CoffeesContextProvider({
     dispatch(removeCoffeeFromCartAction(coffeeId))
   }
 
-  function getCoffeeUnitsByCoffeeId(coffeeId: number): number {
-    const coffee = coffeesOnCart.find(coffee => coffee.id === coffeeId)
-    return coffee != null ? coffee.units : 0
-  }
-
+  const { coffees, coffeesOnCart } = coffeesState
   const { itemsPrice, deliveryPrice, totalPrice, totalUnits } =
     extractCartData(coffeesOnCart)
 
-  console.log(coffeesOnCart)
+  function getCoffeeUnitsByCoffeeId(coffeeId: number): number {
+    const coffee = coffeesOnCart.find(coffee => coffee.id === coffeeId)
+    return coffee !== undefined ? coffee.units : 0
+  }
+
   return (
     <CoffeesContext.Provider
       value={{
