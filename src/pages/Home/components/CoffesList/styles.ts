@@ -10,9 +10,9 @@ export const CoffeesListContainer = styled.menu`
   }
 
   > div {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 2.5rem 2rem;
-    justify-content: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   }
 `
