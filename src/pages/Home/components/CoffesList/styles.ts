@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CoffeesListContainer = styled.section`
+export const CoffeesListContainer = styled.menu`
   h2 {
     font-size: 2rem;
     font-family: 'Baloo 2';

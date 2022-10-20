@@ -1,4 +1,4 @@
-import { CurrencyDollar } from 'phosphor-react'
+import { MapPinLine } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
 import { Input } from '../Input'
 import {
@@ -13,7 +13,7 @@ export function AddressForm(): JSX.Element {
   return (
     <AddressDataContainer>
       <FormSectionHeader>
-        <CurrencyDollar size={22} />
+        <MapPinLine size={22} />
         <div>
           <span>Pagamento</span>
           <p>
@@ -23,26 +23,38 @@ export function AddressForm(): JSX.Element {
       </FormSectionHeader>
 
       <InputsContainer>
-        <Input placeholder="CEP" id="cep" register={register} />
-        <Input placeholder="Rua" id="street" register={register} />
+        <Input placeholder="CEP" title="CEP" id="cep" register={register} />
+        <Input placeholder="Rua" title="Rua" id="street" register={register} />
         <div>
           <Input
             placeholder="Número"
+            title="Número"
             id="number"
             type="number"
             register={register}
           />
           <Input
             placeholder="Complemento"
+            title="Complemento"
             hasOptionalLabel
             id="complement"
             register={register}
           />
         </div>
         <div>
-          <Input placeholder="Bairro" id="neighborhood" register={register} />
-          <Input placeholder="Cidade" id="city" register={register} />
-          <Input placeholder="UF" id="uf" register={register} />
+          <Input
+            placeholder="Bairro"
+            title="Bairro"
+            id="neighborhood"
+            register={register}
+          />
+          <Input
+            placeholder="Cidade"
+            title="Cidade"
+            id="city"
+            register={register}
+          />
+          <Input placeholder="UF" title="UF" id="uf" register={register} />
         </div>
       </InputsContainer>
     </AddressDataContainer>

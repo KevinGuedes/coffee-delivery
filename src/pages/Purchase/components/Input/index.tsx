@@ -13,11 +13,14 @@ export function Input({
   register,
   ...props
 }: InputProps): JSX.Element {
+  const isNumberInput = props.type === 'number'
+
   return (
     <InputContainer>
       <input
         {...props}
-        {...register(props.id, { valueAsNumber: props.type === 'number' })}
+        {...register(props.id, { valueAsNumber: isNumberInput })}
+        {...(isNumberInput && { min: 0, step: 1 })}
       />
       {hasOptionalLabel && <span>Opcional</span>}
     </InputContainer>
