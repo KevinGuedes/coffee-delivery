@@ -4,9 +4,11 @@ import { extractCartData } from '../utils/extractCartData'
 import { coffeesReducer } from '../reducers/coffees/reducer'
 import {
   addOneCoffeeUnitToCartAction,
+  confirmPurchaseAction,
   removeCoffeeFromCartAction,
   removeOneCoffeeUnitFromCartAction
 } from '../reducers/coffees/actions'
+import { PurchaseFormData } from '../pages/Purchase/components/PurcahseForm'
 
 export type CoffeeOnCart = Pick<Coffee, 'id' | 'image' | 'name' | 'price'> & {
   units: number
@@ -15,6 +17,7 @@ export type CoffeeOnCart = Pick<Coffee, 'id' | 'image' | 'name' | 'price'> & {
 interface CoffeesContextData {
   coffees: Coffee[]
   coffeesOnCart: CoffeeOnCart[]
+  purchaseFormData: PurchaseFormData
   totalUnits: number
   itemsPrice: string
   totalPrice: string
@@ -23,6 +26,7 @@ interface CoffeesContextData {
   removeOneCoffeeUnitFromCart: (coffeeId: number) => void
   removeCoffeeFromCart: (coffeeId: number) => void
   getCoffeeUnitsByCoffeeId: (coffeeId: number) => number
+  onSubmitPurchase: (purchaseFormData: PurchaseFormData) => void
 }
 
 const CoffeesContext = createContext({} as CoffeesContextData)
@@ -40,7 +44,8 @@ export function CoffeesContextProvider({
 }: CoffeesContextProps): JSX.Element {
   const [coffeesState, dispatch] = useReducer(coffeesReducer, {
     coffees: coffeesData,
-    coffeesOnCart: []
+    coffeesOnCart: [],
+    purchaseFormData: {} as PurchaseFormData
   })
 
   function addOneCoffeeUnitToCart(coffeeId: number): void {
@@ -55,7 +60,11 @@ export function CoffeesContextProvider({
     dispatch(removeCoffeeFromCartAction(coffeeId))
   }
 
-  const { coffees, coffeesOnCart } = coffeesState
+  function onSubmitPurchase(purchaseFormData: PurchaseFormData): void {
+    dispatch(confirmPurchaseAction(purchaseFormData))
+  }
+
+  const { coffees, coffeesOnCart, purchaseFormData } = coffeesState
   const { itemsPrice, deliveryPrice, totalPrice, totalUnits } =
     extractCartData(coffeesOnCart)
 
@@ -73,10 +82,12 @@ export function CoffeesContextProvider({
         itemsPrice,
         totalPrice,
         deliveryPrice,
+        purchaseFormData,
         addOneCoffeeUnitToCart,
         removeOneCoffeeUnitFromCart,
         removeCoffeeFromCart,
-        getCoffeeUnitsByCoffeeId
+        getCoffeeUnitsByCoffeeId,
+        onSubmitPurchase
       }}
     >
       {children}

@@ -1,3 +1,5 @@
+import { PurchaseFormData } from '../../pages/Purchase/components/PurcahseForm'
+
 export enum CoffeeActionTypes {
   ADD_ONE_COFFEE_UNIT_TO_CART = 'ADD_ONE_COFFEE_UNIT_TO_CART',
   REMOVE_ONE_COFFEE_UNIT_FROM_CART = 'REMOVE_ONE_COFFEE_UNIT_FROM_CART',
@@ -35,6 +37,17 @@ export function removeCoffeeFromCartAction(coffeeId: number): CoffeeAction {
     type: CoffeeActionTypes.REMOVE_COFFEE_FROM_CART,
     payload: {
       coffeeId
+    }
+  }
+}
+
+export function confirmPurchaseAction(
+  purchaseFormData: PurchaseFormData
+): CoffeeAction {
+  return {
+    type: CoffeeActionTypes.CONFIRM_PURCHASE,
+    payload: {
+      purchaseFormData
     }
   }
 }

@@ -10,16 +10,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export function Input({
   hasOptionalLabel = false,
-  id,
-  type,
   register,
   ...props
 }: InputProps): JSX.Element {
-  const registerOptions = type === 'number' ? { valueAsNumber: true } : {}
-
   return (
     <InputContainer>
-      <input {...props} id={id} {...register(id, registerOptions)} />
+      <input
+        {...props}
+        {...register(props.id, { valueAsNumber: props.type === 'number' })}
+      />
       {hasOptionalLabel && <span>Opcional</span>}
     </InputContainer>
   )

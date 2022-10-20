@@ -9,8 +9,18 @@ export enum PaymentType {
   CASH = 'Dinheiro'
 }
 
-export function PaymentTypeForm(): JSX.Element {
+interface PaymentTypeFormProps {
+  onPaymentTypeChange: (paymentType: PaymentType) => void
+}
+
+export function PaymentTypeForm({
+  onPaymentTypeChange
+}: PaymentTypeFormProps): JSX.Element {
   const { register } = useFormContext()
+
+  function handlePaymentTypeChange(paymentType: PaymentType): void {
+    onPaymentTypeChange(paymentType)
+  }
 
   return (
     <PaymentTypeFormContainer>
@@ -28,6 +38,7 @@ export function PaymentTypeForm(): JSX.Element {
         id="paymentType"
         type="single"
         {...register('paymentType')}
+        onValueChange={handlePaymentTypeChange}
       >
         <ToggleGroup.Item value={PaymentType.CREDIT_CARD}>
           <CreditCard size={16} />

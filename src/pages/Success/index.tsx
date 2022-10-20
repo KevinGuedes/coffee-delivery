@@ -3,8 +3,11 @@ import { SuccessContainer } from './styles'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import deliveryGuy from '../../assets/delivery-guy.png'
 import { Information } from '../../components/Information'
+import { useCoffeesContext } from '../../contexts/CoffeesContext'
 
 export function Success(): JSX.Element {
+  const { purchaseFormData } = useCoffeesContext()
+
   return (
     <SuccessContainer>
       <h1>Uhuuu! Pedido confirmado!</h1>
@@ -17,8 +20,13 @@ export function Success(): JSX.Element {
                 <MapPin size={18} weight="fill" />
               </Information.Icon>
               <Information.Text>
-                Entrega em Rua João Daniel Martinelli, 102 <br />
-                Farrapos - Porto Alegre, RS
+                Entrega em{' '}
+                <strong>
+                  {purchaseFormData.street}, {purchaseFormData.number}
+                </strong>
+                <br />
+                {purchaseFormData.neighborhood} - {purchaseFormData.city},{' '}
+                {purchaseFormData.uf}
               </Information.Text>
             </Information.Root>
 
@@ -37,8 +45,8 @@ export function Success(): JSX.Element {
                 <CurrencyDollar size={18} weight="fill" />
               </Information.Icon>
               <Information.Text>
-                Previsão de entrega <br />
-                <strong>20 min - 30 min</strong>
+                Pagamento na entrega <br />
+                <strong>{purchaseFormData.paymentType}</strong>
               </Information.Text>
             </Information.Root>
           </div>

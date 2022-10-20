@@ -1,11 +1,13 @@
 import produce from 'immer'
 import { CoffeeOnCart } from '../../contexts/CoffeesContext'
 import { Coffee } from '../../data/coffees'
+import { PurchaseFormData } from '../../pages/Purchase/components/PurcahseForm'
 import { CoffeeAction, CoffeeActionTypes } from './actions'
 
 interface CoffeesState {
   coffees: Coffee[]
   coffeesOnCart: CoffeeOnCart[]
+  purchaseFormData: PurchaseFormData
 }
 
 export function coffeesReducer(
@@ -65,6 +67,10 @@ export function coffeesReducer(
         draft.coffeesOnCart = draft.coffeesOnCart.filter(
           coffeeOnCart => coffeeOnCart.id !== payload.coffeeId
         )
+      })
+    case CoffeeActionTypes.CONFIRM_PURCHASE:
+      return produce(state, draft => {
+        draft.purchaseFormData = payload.purchaseFormData
       })
     default:
       return state
