@@ -8,7 +8,7 @@ import { useCoffeesContext } from '../../../../contexts/CoffeesContext'
 import { useNavigate } from 'react-router-dom'
 
 const purchaseFormValidationSchema = zod.object({
-  cep: zod.string().length(8, 'CEP inválido'),
+  cep: zod.string().length(9, 'CEP inválido'),
   street: zod.string().min(1, 'Rua não informada'),
   number: zod.number().int('Número inválido').nonnegative('Número inválido'),
   city: zod.string().min(1, 'Cidade não informado'),
@@ -23,6 +23,7 @@ export type PurchaseFormData = zod.infer<typeof purchaseFormValidationSchema>
 export function PurchaseForm(): JSX.Element {
   const { onSubmitPurchase } = useCoffeesContext()
   const navigate = useNavigate()
+
   const purchaseForm = useForm<PurchaseFormData>({
     resolver: zodResolver(purchaseFormValidationSchema),
     defaultValues: {

@@ -1,5 +1,7 @@
 import { MapPinLine } from 'phosphor-react'
+import { FormEvent } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { cepInputMask } from '../../../../utils/cepInputMask'
 import { Input } from '../Input'
 import {
   AddressDataContainer,
@@ -9,6 +11,10 @@ import {
 
 export function AddressForm(): JSX.Element {
   const { register } = useFormContext()
+
+  function handleCepInput(event: FormEvent<HTMLInputElement>): void {
+    cepInputMask(event)
+  }
 
   return (
     <AddressDataContainer>
@@ -23,7 +29,13 @@ export function AddressForm(): JSX.Element {
       </FormSectionHeader>
 
       <InputsContainer>
-        <Input placeholder="CEP" title="CEP" id="cep" register={register} />
+        <Input
+          placeholder="CEP"
+          title="CEP"
+          id="cep"
+          onInput={handleCepInput}
+          register={register}
+        />
         <Input placeholder="Rua" title="Rua" id="street" register={register} />
         <div>
           <Input
