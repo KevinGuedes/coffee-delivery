@@ -10,8 +10,7 @@ export enum PaymentType {
 }
 
 export function PaymentTypeForm(): JSX.Element {
-  const { register } = useFormContext()
-  const { setValue } = useFormContext()
+  const { register, setValue } = useFormContext()
 
   function handlePaymentTypeChange(paymentType: PaymentType): void {
     setValue('paymentType', paymentType)

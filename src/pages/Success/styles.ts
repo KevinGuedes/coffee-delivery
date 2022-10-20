@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SuccessContainer = styled.main`
+export const SucessHeaderContainer = styled.header`
   margin-top: 5rem;
 
   h1 {
@@ -13,7 +13,9 @@ export const SuccessContainer = styled.main`
     line-height: 1.3;
     color: ${props => props.theme.base.subtitle};
   }
+`
 
+export const SuccessContainer = styled.main`
   section {
     display: flex;
     align-items: center;
@@ -22,9 +24,11 @@ export const SuccessContainer = styled.main`
     margin-top: 1.75rem;
 
     > div {
+      flex: 1;
       border: 1px solid transparent;
       border-radius: 6px 36px;
-      width: 33rem;
+      min-width: 33rem;
+      max-width: 40rem;
 
       background-image: linear-gradient(white, white),
         linear-gradient(

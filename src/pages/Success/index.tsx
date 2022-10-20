@@ -1,4 +1,4 @@
-import { SuccessContainer } from './styles'
+import { SuccessContainer, SucessHeaderContainer } from './styles'
 
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import deliveryGuy from '../../assets/delivery-guy.png'
@@ -10,8 +10,10 @@ export function Success(): JSX.Element {
 
   return (
     <SuccessContainer>
-      <h1>Uhuuu! Pedido confirmado!</h1>
-      <p>Agora é só aguardar que logo o café chegará até você</p>
+      <SucessHeaderContainer>
+        <h1>Uhuuu! Pedido confirmado!</h1>
+        <p>Agora é só aguardar que logo o café chegará até você</p>
+      </SucessHeaderContainer>
       <section>
         <div>
           <div>
