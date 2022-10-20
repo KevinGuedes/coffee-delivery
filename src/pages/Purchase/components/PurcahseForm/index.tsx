@@ -36,16 +36,12 @@ export function PurchaseForm(): JSX.Element {
     }
   })
 
-  const { handleSubmit, setValue, reset } = purchaseForm
+  const { handleSubmit, reset } = purchaseForm
 
   function handleSubmitPurchase(purchaseFormData: PurchaseFormData): void {
     onSubmitPurchase(purchaseFormData)
     reset()
     navigate('/success')
-  }
-
-  function onPaymentTypeChange(paymentType: PaymentType): void {
-    setValue('paymentType', paymentType)
   }
 
   return (
@@ -55,7 +51,7 @@ export function PurchaseForm(): JSX.Element {
       <form id="purchase" onSubmit={handleSubmit(handleSubmitPurchase)}>
         <FormProvider {...purchaseForm}>
           <AddressForm />
-          <PaymentTypeForm onPaymentTypeChange={onPaymentTypeChange} />
+          <PaymentTypeForm />
         </FormProvider>
       </form>
     </PurchaseFormContainer>

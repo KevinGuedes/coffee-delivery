@@ -9,17 +9,12 @@ export enum PaymentType {
   CASH = 'Dinheiro'
 }
 
-interface PaymentTypeFormProps {
-  onPaymentTypeChange: (paymentType: PaymentType) => void
-}
-
-export function PaymentTypeForm({
-  onPaymentTypeChange
-}: PaymentTypeFormProps): JSX.Element {
+export function PaymentTypeForm(): JSX.Element {
   const { register } = useFormContext()
+  const { setValue } = useFormContext()
 
   function handlePaymentTypeChange(paymentType: PaymentType): void {
-    onPaymentTypeChange(paymentType)
+    setValue('paymentType', paymentType)
   }
 
   return (

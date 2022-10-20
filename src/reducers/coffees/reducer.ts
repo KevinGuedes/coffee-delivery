@@ -1,8 +1,8 @@
-import produce from 'immer'
 import { CoffeeOnCart } from '../../contexts/CoffeesContext'
 import { Coffee } from '../../data/coffees'
 import { PurchaseFormData } from '../../pages/Purchase/components/PurcahseForm'
 import { CoffeeAction, CoffeeActionTypes } from './actions'
+import produce from 'immer'
 
 interface CoffeesState {
   coffees: Coffee[]
@@ -71,6 +71,7 @@ export function coffeesReducer(
     case CoffeeActionTypes.CONFIRM_PURCHASE:
       return produce(state, draft => {
         draft.purchaseFormData = payload.purchaseFormData
+        draft.coffeesOnCart = []
       })
     default:
       return state
