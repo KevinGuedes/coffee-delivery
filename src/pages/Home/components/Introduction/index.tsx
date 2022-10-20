@@ -46,7 +46,9 @@ export function Introduction(): JSX.Element {
           </Information.Root>
         </div>
       </aside>
-      <img src={coffeeIntroduction} alt="" />
+      <figure>
+        <img src={coffeeIntroduction} alt="" />
+      </figure>
     </IntroductionContainer>
   )
 }

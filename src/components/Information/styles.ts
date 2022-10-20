@@ -41,3 +41,9 @@ export const InformationTextContainer = styled.p`
   line-height: 1.3;
   color: ${props => props.theme.base.text};
 `
+
+export const InformationAddressContainer = styled.address`
+  font-style: normal;
+  line-height: 1.3;
+  color: ${props => props.theme.base.text};
+`

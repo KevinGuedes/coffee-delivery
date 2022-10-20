@@ -4,8 +4,11 @@ export const IntroductionContainer = styled.section`
   display: flex;
   padding: 5.75rem 0;
   justify-content: space-between;
+  gap: 3.125rem;
 
   aside {
+    flex-shrink: 2;
+
     h1 {
       font-size: 3rem;
       font-family: 'Baloo 2';
@@ -27,10 +30,14 @@ export const IntroductionContainer = styled.section`
     }
   }
 
-  img {
+  figure {
+    flex-shrink: 1;
     max-height: 22.5rem;
     max-width: 29.75rem;
-    width: 100%;
-    height: 100%;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 `

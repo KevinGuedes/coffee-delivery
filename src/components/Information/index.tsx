@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import {
   CircleColors,
+  InformationAddressContainer,
   InformationIconContainer,
   InformationRootContainer,
   InformationTextContainer
@@ -37,8 +38,17 @@ function InformationText({ children }: InformationTextProps): JSX.Element {
   return <InformationTextContainer>{children}</InformationTextContainer>
 }
 
+interface InformationAddressProps extends InformationProps {}
+
+function InformationAddress({
+  children
+}: InformationAddressProps): JSX.Element {
+  return <InformationAddressContainer>{children}</InformationAddressContainer>
+}
+
 export const Information = {
   Root: InformationRoot,
   Icon: InformationIcon,
-  Text: InformationText
+  Text: InformationText,
+  Address: InformationAddress
 }

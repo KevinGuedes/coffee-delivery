@@ -19,7 +19,7 @@ export function Success(): JSX.Element {
               <Information.Icon circleColor="purple">
                 <MapPin size={18} weight="fill" />
               </Information.Icon>
-              <Information.Text>
+              <Information.Address>
                 Entrega em{' '}
                 <strong>
                   {purchaseFormData.street}, {purchaseFormData.number}
@@ -27,7 +27,7 @@ export function Success(): JSX.Element {
                 <br />
                 {purchaseFormData.neighborhood} - {purchaseFormData.city},{' '}
                 {purchaseFormData.uf}
-              </Information.Text>
+              </Information.Address>
             </Information.Root>
 
             <Information.Root>
@@ -52,7 +52,9 @@ export function Success(): JSX.Element {
           </div>
         </div>
 
-        <img src={deliveryGuy} alt="Pessoa entregando café em uma moto" />
+        <figure>
+          <img src={deliveryGuy} alt="Pessoa entregando café em uma moto" />
+        </figure>
       </section>
     </SuccessContainer>
   )
