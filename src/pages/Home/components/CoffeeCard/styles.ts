@@ -27,7 +27,7 @@ export const HeaderContainer = styled.header`
   }
 `
 
-export const CoffeeCardContainer = styled.li`
+export const CoffeeCardContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;

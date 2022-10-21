@@ -41,8 +41,8 @@ export function PurchaseForm(): JSX.Element {
 
   function handleSubmitPurchase(purchaseFormData: PurchaseFormData): void {
     onSubmitPurchase(purchaseFormData)
-    reset()
     navigate('/success')
+    reset()
   }
 
   return (

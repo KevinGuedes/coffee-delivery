@@ -16,7 +16,7 @@ export function SelectAmount({ coffeeId }: SelectAmountProps): JSX.Element {
   const units = getCoffeeUnitsByCoffeeId(coffeeId)
 
   function handleAddOneCoffeeUnitToCart(): void {
-    if (units < 100) addOneCoffeeUnitToCart(coffeeId)
+    if (units < 99) addOneCoffeeUnitToCart(coffeeId)
   }
 
   function handleRemoveOneCoffeeUnitFromCart(): void {

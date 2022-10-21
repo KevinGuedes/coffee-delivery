@@ -6,7 +6,7 @@ export const IntroductionContainer = styled.section`
   justify-content: space-between;
   gap: 3.125rem;
 
-  aside {
+  article {
     flex-shrink: 2;
 
     h1 {

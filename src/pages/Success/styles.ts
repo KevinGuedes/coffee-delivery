@@ -30,14 +30,14 @@ export const SuccessContainer = styled.main`
       min-width: 33rem;
       max-width: 40rem;
 
+      background-origin: border-box;
+      background-clip: content-box, border-box;
       background-image: linear-gradient(white, white),
         linear-gradient(
           to right,
           ${props => props.theme.brand.yellow},
           ${props => props.theme.brand.purple}
         );
-      background-origin: border-box;
-      background-clip: content-box, border-box;
 
       > div {
         background-color: ${props => props.theme.base.background};

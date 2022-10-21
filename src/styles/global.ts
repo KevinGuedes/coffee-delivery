@@ -35,4 +35,10 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-thumb:hover {
     background-color: ${props => props.theme.brand['purple-dark']};
   }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 87.5%;
+    }
+  }
 `

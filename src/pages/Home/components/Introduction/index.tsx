@@ -7,7 +7,7 @@ import coffeeIntroduction from '../../../../assets/coffee-introduction.png'
 export function Introduction(): JSX.Element {
   return (
     <IntroductionContainer>
-      <aside>
+      <article>
         <h1>Encontre o café perfeito para qualquer hora do dia</h1>
         <p>
           Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
@@ -45,7 +45,7 @@ export function Introduction(): JSX.Element {
             </Information.Text>
           </Information.Root>
         </div>
-      </aside>
+      </article>
       <figure>
         <img src={coffeeIntroduction} alt="" />
       </figure>

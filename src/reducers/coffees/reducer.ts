@@ -28,6 +28,7 @@ export function coffeesReducer(
         )
 
         const { id, image, name, price } = coffeeToAdd as Coffee
+
         return produce(state, draft => {
           draft.coffeesOnCart.push({
             id,
