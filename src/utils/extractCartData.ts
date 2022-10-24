@@ -8,8 +8,6 @@ interface CartData {
 }
 
 export function extractCartData(coffeesOnCart: CoffeeOnCart[]): CartData {
-  console.log(11232)
-
   const currencyFormatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'

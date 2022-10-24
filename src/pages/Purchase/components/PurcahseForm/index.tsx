@@ -8,7 +8,10 @@ import { useCoffeesContext } from '../../../../contexts/CoffeesContext'
 import { useNavigate } from 'react-router-dom'
 
 const purchaseFormValidationSchema = zod.object({
-  cep: zod.string().length(9, 'CEP inválido'),
+  cep: zod
+    .string()
+    .length(9, 'CEP inválido')
+    .regex(/^[0-9]{5}-[0-9]{3}$/),
   street: zod.string().min(1, 'Rua não informada'),
   number: zod.number().int('Número inválido').nonnegative('Número inválido'),
   city: zod.string().min(1, 'Cidade não informado'),

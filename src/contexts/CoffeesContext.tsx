@@ -2,13 +2,13 @@ import { ReactNode, createContext, useContext, useReducer } from 'react'
 import { Coffee, coffeesData } from '../data/coffees'
 import { extractCartData } from '../utils/extractCartData'
 import { coffeesReducer } from '../reducers/coffees/reducer'
+import { PurchaseFormData } from '../pages/Purchase/components/PurcahseForm'
 import {
   addOneCoffeeUnitToCartAction,
   confirmPurchaseAction,
   removeCoffeeFromCartAction,
   removeOneCoffeeUnitFromCartAction
 } from '../reducers/coffees/actions'
-import { PurchaseFormData } from '../pages/Purchase/components/PurcahseForm'
 
 export type CoffeeOnCart = Pick<Coffee, 'id' | 'image' | 'name' | 'price'> & {
   units: number

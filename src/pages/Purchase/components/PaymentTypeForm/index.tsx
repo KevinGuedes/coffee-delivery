@@ -1,6 +1,7 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
+import { PurchaseFormData } from '../PurcahseForm'
 import { FormSectionHeader, PaymentTypeFormContainer } from './styles'
 
 export enum PaymentType {
@@ -10,7 +11,7 @@ export enum PaymentType {
 }
 
 export function PaymentTypeForm(): JSX.Element {
-  const { register, setValue } = useFormContext()
+  const { register, setValue } = useFormContext<PurchaseFormData>()
 
   function handlePaymentTypeChange(paymentType: PaymentType): void {
     setValue('paymentType', paymentType)
