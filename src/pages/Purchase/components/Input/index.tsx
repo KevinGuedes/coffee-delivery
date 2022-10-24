@@ -1,16 +1,20 @@
 import { InputHTMLAttributes } from 'react'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldError, UseFormRegister } from 'react-hook-form'
+import { PurchaseFormData } from '../PurcahseForm'
 import { InputContainer } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   showOptionalLabel?: boolean
-  register: UseFormRegister<FieldValues>
-  id: string
+  register: UseFormRegister<PurchaseFormData>
+  id: keyof PurchaseFormData
+  error?: FieldError
 }
 
 export function Input({
   showOptionalLabel = false,
   register,
+  error,
+  id,
   ...props
 }: InputProps): JSX.Element {
   const isNumberInput = props.type === 'number'
@@ -19,10 +23,11 @@ export function Input({
     <InputContainer>
       <input
         {...props}
-        {...register(props.id, { valueAsNumber: isNumberInput })}
+        {...register(id, { valueAsNumber: isNumberInput })}
         {...(isNumberInput && { min: 0, step: 1 })}
       />
       {showOptionalLabel && <span>Opcional</span>}
+      {error !== undefined && <p role="alert">{error.message}</p>}
     </InputContainer>
   )
 }
