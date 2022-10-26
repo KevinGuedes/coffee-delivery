@@ -10,7 +10,8 @@ export const defaultTheme = {
     label: '#8d8686',
     text: '#574f4d',
     subtitle: '#403937',
-    title: '#272221'
+    title: '#272221',
+    danger: '#d41d2c'
   },
 
   brand: {

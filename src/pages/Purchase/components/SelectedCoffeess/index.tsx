@@ -7,10 +7,16 @@ import {
 
 import { CoffeeItem } from '../CoffeeItem'
 import { useCoffeesContext } from '../../../../contexts/CoffeesContext'
+import { FormValidation } from '../FormValidation'
+import { useFormContext } from 'react-hook-form'
+import { PurchaseFormData } from '../..'
 
 export function SelectedCoffees(): JSX.Element {
+  const { formState } = useFormContext<PurchaseFormData>()
   const { coffeesOnCart, totalPrice, itemsPrice, deliveryPrice } =
     useCoffeesContext()
+
+  const hasFormErrors = !formState.isValid
 
   return (
     <SelectedCoffeesContainer>
@@ -43,6 +49,8 @@ export function SelectedCoffees(): JSX.Element {
         <button form="purchase" type="submit">
           CONFIRMAR PEDIDO
         </button>
+
+        {hasFormErrors && <FormValidation />}
       </SelectedCoffeesCard>
     </SelectedCoffeesContainer>
   )

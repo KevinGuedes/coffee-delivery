@@ -1,9 +1,9 @@
 import { MapPinLine } from 'phosphor-react'
 import { FormEvent } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { PurchaseFormData } from '../..'
 import { cepInputMask } from '../../../../utils/cepInputMask'
 import { Input } from '../Input'
-import { PurchaseFormData } from '../PurcahseForm'
 import {
   AddressDataContainer,
   FormSectionHeader,
@@ -11,20 +11,18 @@ import {
 } from './styles'
 
 export function AddressForm(): JSX.Element {
-  const {
-    register,
-    watch,
-    formState: { errors }
-  } = useFormContext<PurchaseFormData>()
+  const { register, watch } = useFormContext<PurchaseFormData>()
 
   function handleCepInput(event: FormEvent<HTMLInputElement>): void {
     event.currentTarget.value = cepInputMask(event.currentTarget.value)
   }
 
+  function handleUfInput(event: FormEvent<HTMLInputElement>): void {
+    event.currentTarget.value = event.currentTarget.value.toUpperCase()
+  }
+
   const complement = watch('complement')
   const showOptionalLabel = complement?.length === 0
-
-  console.log(errors)
 
   return (
     <AddressDataContainer>
@@ -46,15 +44,8 @@ export function AddressForm(): JSX.Element {
           onInput={handleCepInput}
           register={register}
           maxLength={9}
-          error={errors.cep}
         />
-        <Input
-          placeholder="Rua"
-          title="Rua"
-          id="street"
-          register={register}
-          error={errors.street}
-        />
+        <Input placeholder="Rua" title="Rua" id="street" register={register} />
         <div>
           <Input
             placeholder="Número"
@@ -62,7 +53,6 @@ export function AddressForm(): JSX.Element {
             id="number"
             type="number"
             register={register}
-            error={errors.number}
           />
           <Input
             placeholder="Complemento"
@@ -70,7 +60,6 @@ export function AddressForm(): JSX.Element {
             showOptionalLabel={showOptionalLabel}
             id="complement"
             register={register}
-            error={errors.complement}
           />
         </div>
         <div>
@@ -79,21 +68,21 @@ export function AddressForm(): JSX.Element {
             title="Bairro"
             id="neighborhood"
             register={register}
-            error={errors.neighborhood}
           />
           <Input
             placeholder="Cidade"
             title="Cidade"
             id="city"
             register={register}
-            error={errors.city}
           />
+
           <Input
             placeholder="UF"
             title="UF"
             id="uf"
+            onInput={handleUfInput}
+            maxLength={2}
             register={register}
-            error={errors.uf}
           />
         </div>
       </InputsContainer>
