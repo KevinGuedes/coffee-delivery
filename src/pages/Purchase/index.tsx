@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { PurchaseContainer } from './styles'
 import { PaymentType } from './components/PaymentTypeForm'
+import { useCoffeesContext } from '../../contexts/CoffeesContext'
+import { EmptyCart } from './components/EmptyCart'
 
 const purchaseFormValidationSchema = zod.object({
   cep: zod
@@ -18,7 +20,7 @@ const purchaseFormValidationSchema = zod.object({
     .nonnegative('Número inválido'),
   city: zod.string().min(1, 'Cidade não informada'),
   neighborhood: zod.string().min(1, 'Bairro não informado'),
-  uf: zod.string().length(2, 'UF deve conter somente 2 dígitos'),
+  uf: zod.string().length(2, 'Informe os 2 dígitos referentes a sua UF'),
   complement: zod.string().optional(),
   paymentType: zod.nativeEnum(PaymentType, {
     required_error: 'Escolha uma forma de pagamento'
@@ -28,6 +30,7 @@ const purchaseFormValidationSchema = zod.object({
 export type PurchaseFormData = zod.infer<typeof purchaseFormValidationSchema>
 
 export function Purchase(): JSX.Element {
+  const { isCartEmpty } = useCoffeesContext()
   const purchaseForm = useForm<PurchaseFormData>({
     resolver: zodResolver(purchaseFormValidationSchema),
     defaultValues: {
@@ -42,11 +45,17 @@ export function Purchase(): JSX.Element {
   })
 
   return (
-    <PurchaseContainer>
-      <FormProvider {...purchaseForm}>
-        <PurchaseForm />
-        <SelectedCoffees />
-      </FormProvider>
-    </PurchaseContainer>
+    <div>
+      {isCartEmpty ? (
+        <EmptyCart />
+      ) : (
+        <PurchaseContainer>
+          <FormProvider {...purchaseForm}>
+            <PurchaseForm />
+            <SelectedCoffees />
+          </FormProvider>
+        </PurchaseContainer>
+      )}
+    </div>
   )
 }

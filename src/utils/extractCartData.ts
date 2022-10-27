@@ -1,13 +1,17 @@
 import { CoffeeOnCart } from '../contexts/CoffeesContext'
 
 interface CartData {
-  itemsPrice: string
-  deliveryPrice: string
-  totalPrice: string
-  totalUnits: number
+  itemsPrice?: string
+  deliveryPrice?: string
+  totalPrice?: string
+  totalUnits?: number
+  isCartEmpty?: boolean
 }
 
 export function extractCartData(coffeesOnCart: CoffeeOnCart[]): CartData {
+  const isCartEmpty = coffeesOnCart.length === 0
+  if (isCartEmpty) return { isCartEmpty }
+
   const currencyFormatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'

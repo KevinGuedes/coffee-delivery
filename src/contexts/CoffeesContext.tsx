@@ -2,7 +2,7 @@ import { ReactNode, createContext, useContext, useReducer } from 'react'
 import { Coffee, coffeesData } from '../data/coffees'
 import { extractCartData } from '../utils/extractCartData'
 import { coffeesReducer } from '../reducers/coffees/reducer'
-import { PurchaseFormData } from '../pages/Purchase/components/PurcahseForm'
+import { PurchaseFormData } from '../pages/Purchase'
 import {
   addOneCoffeeUnitToCartAction,
   confirmPurchaseAction,
@@ -18,10 +18,11 @@ interface CoffeesContextData {
   coffees: Coffee[]
   coffeesOnCart: CoffeeOnCart[]
   purchaseFormData: PurchaseFormData
-  totalUnits: number
-  itemsPrice: string
-  totalPrice: string
-  deliveryPrice: string
+  totalUnits?: number
+  itemsPrice?: string
+  totalPrice?: string
+  deliveryPrice?: string
+  isCartEmpty?: boolean
   addOneCoffeeUnitToCart: (coffeeId: number) => void
   removeOneCoffeeUnitFromCart: (coffeeId: number) => void
   removeCoffeeFromCart: (coffeeId: number) => void
@@ -65,7 +66,7 @@ export function CoffeesContextProvider({
   }
 
   const { coffees, coffeesOnCart, purchaseFormData } = coffeesState
-  const { itemsPrice, deliveryPrice, totalPrice, totalUnits } =
+  const { itemsPrice, deliveryPrice, totalPrice, totalUnits, isCartEmpty } =
     extractCartData(coffeesOnCart)
 
   function getCoffeeUnitsByCoffeeId(coffeeId: number): number {
@@ -82,6 +83,7 @@ export function CoffeesContextProvider({
         itemsPrice,
         totalPrice,
         deliveryPrice,
+        isCartEmpty,
         purchaseFormData,
         addOneCoffeeUnitToCart,
         removeOneCoffeeUnitFromCart,
