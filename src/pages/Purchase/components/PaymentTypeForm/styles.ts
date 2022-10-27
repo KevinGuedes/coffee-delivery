@@ -35,11 +35,6 @@ export const PaymentTypeFormContainer = styled.div`
     display: flex;
     gap: 0.75rem;
 
-    button[data-state='on'] {
-      border: 1px solid ${props => props.theme.brand.purple};
-      background-color: ${props => props.theme.brand['purple-light']};
-    }
-
     button {
       flex: 1;
       padding: 1rem;
@@ -55,14 +50,17 @@ export const PaymentTypeFormContainer = styled.div`
       align-items: center;
 
       color: ${props => props.theme.base.text};
-      background-color: ${props => props.theme.base.button};
-      transition: background-color 0.2s;
       transition: color 0.2s;
 
       svg {
         color: ${props => props.theme.brand.purple};
         transition: color 0.2s;
       }
+    }
+
+    button[data-state='off'] {
+      background-color: ${props => props.theme.base.button};
+      transition: background-color 0.2s;
 
       &:hover {
         color: ${props => props.theme.base.subtitle};
@@ -72,6 +70,11 @@ export const PaymentTypeFormContainer = styled.div`
           color: ${props => props.theme.brand['purple-dark']};
         }
       }
+    }
+
+    button[data-state='on'] {
+      border: 1px solid ${props => props.theme.brand.purple};
+      background-color: ${props => props.theme.brand['purple-light']};
     }
   }
 `
