@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useReducer } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useReducer,
+  useEffect
+} from 'react'
 import { Coffee, coffeesData } from '../data/coffees'
 import { extractCartData } from '../utils/extractCartData'
 import { coffeesReducer } from '../reducers/coffees/reducer'
@@ -9,6 +15,7 @@ import {
   removeCoffeeFromCartAction,
   removeOneCoffeeUnitFromCartAction
 } from '../reducers/coffees/actions'
+import superjson from 'superjson'
 
 export type CoffeeOnCart = Pick<Coffee, 'id' | 'image' | 'name' | 'price'> & {
   units: number
@@ -43,11 +50,33 @@ interface CoffeesContextProps {
 export function CoffeesContextProvider({
   children
 }: CoffeesContextProps): JSX.Element {
-  const [coffeesState, dispatch] = useReducer(coffeesReducer, {
-    coffees: coffeesData,
-    coffeesOnCart: [],
-    purchaseFormData: {} as PurchaseFormData
-  })
+  const [coffeesState, dispatch] = useReducer(
+    coffeesReducer,
+    {
+      coffees: coffeesData,
+      coffeesOnCart: [],
+      purchaseFormData: {} as PurchaseFormData
+    },
+    () => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:coffes-on-cart-v1.0.0'
+      )
+
+      if (storedStateAsJSON) {
+        return {
+          coffees: coffeesData,
+          coffeesOnCart: superjson.parse<CoffeeOnCart[]>(storedStateAsJSON),
+          purchaseFormData: {} as PurchaseFormData
+        }
+      }
+
+      return {
+        coffees: coffeesData,
+        coffeesOnCart: [],
+        purchaseFormData: {} as PurchaseFormData
+      }
+    }
+  )
 
   function addOneCoffeeUnitToCart(coffeeId: number): void {
     dispatch(addOneCoffeeUnitToCartAction(coffeeId))
@@ -73,6 +102,14 @@ export function CoffeesContextProvider({
     const coffee = coffeesOnCart.find(coffee => coffee.id === coffeeId)
     return coffee !== undefined ? coffee.units : 0
   }
+
+  useEffect(() => {
+    const coffeesOnCartAsJSON = superjson.stringify(coffeesOnCart)
+    localStorage.setItem(
+      '@coffee-delivery:coffes-on-cart-v1.0.0',
+      coffeesOnCartAsJSON
+    )
+  }, [coffeesOnCart])
 
   return (
     <CoffeesContext.Provider
