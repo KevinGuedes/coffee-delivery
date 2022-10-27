@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/devices'
 
 export const SucessHeaderContainer = styled.header`
   margin-top: 5rem;
@@ -12,6 +13,12 @@ export const SucessHeaderContainer = styled.header`
   p {
     line-height: 1.3;
     color: ${props => props.theme.base.subtitle};
+  }
+
+  @media ${device.mobile} {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 `
 
@@ -47,6 +54,14 @@ export const SuccessContainer = styled.main`
         padding: 2.5rem;
         border-radius: 6px 36px;
       }
+    }
+  }
+
+  @media ${device.mobile} {
+    section {
+      margin-top: 3rem;
+      flex-direction: column;
+      gap: 3rem;
     }
   }
 `

@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import { device } from '../../../../styles/devices'
 
 export const IntroductionContainer = styled.section`
   display: flex;
-  padding: 5.75rem 0;
   justify-content: space-between;
+  padding: 5.75rem 0;
   gap: 3.125rem;
 
   article {
@@ -38,6 +39,22 @@ export const IntroductionContainer = styled.section`
     img {
       max-width: 100%;
       height: auto;
+    }
+  }
+
+  @media ${device.mobile} {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      > p,
+      h1 {
+        text-align: center;
+      }
     }
   }
 `

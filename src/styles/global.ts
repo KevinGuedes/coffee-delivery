@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { device } from './devices'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -36,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.brand['purple-dark']};
   }
 
-  @media (max-width: 768px) {
+  @media ${device.mobile} {
     html {
       font-size: 87.5%;
     }
